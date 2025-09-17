@@ -1,22 +1,149 @@
+/* ===== Theme Variables ===== */
+:root {
+  /* Light theme (default) */
+  --bg: #f6f6f9;
+  --text: #111;
+  --sidebar-bg: #e0e0e0;
+  --sidebar-text: #333;
+  --user-msg-bg: #007bff;
+  --user-msg-text: #fff;
+  --bot-msg-bg: #ddd;
+  --bot-msg-text: #000;
+  --input-bg: #fff;
+  --input-border: #ccc;
+  --input-text: #111;
+  --button-bg: #007bff;
+  --button-text: #fff;
+  --button-hover: #0056b3;
+}
+
+/* Dark theme (your purple-blue design) */
+body.dark {
+  --bg: #151320;          /* deep dark purple */
+  --text: #e0e0f5;        /* soft light text */
+  --sidebar-bg: #1e1b2f;  /* dark purple-blue */
+  --sidebar-text: #cfc9f0; 
+  --user-msg-bg: #4a3ce2; 
+  --user-msg-text: #fff;
+  --bot-msg-bg: #2b2647;  
+  --bot-msg-text: #e0dff7;
+  --input-bg: #1f1d32;
+  --input-border: #29263d;
+  --input-text: #e0e0f5;
+  --button-bg: #4a3ce2;
+  --button-text: #fff;
+  --button-hover: #372bb5;
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  align-self: flex-end;      /* stick it to the top right in sidebar */
+  margin-bottom: 15px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+#theme-toggle:hover {
+  background: var(--button-hover);
+  transform: scale(1.1);  /* little pop on hover */
+}
+
+#theme-toggle:active {
+  transform: scale(0.95); /* press feedback */
+}
+
+/* ===== General Layout ===== */
 body {
+  margin: 0;
   font-family: sans-serif;
+  height: 100vh;
+  display: flex;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* App wrapper */
+#app {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* Sidebar */
+#sidebar {
+  width: 220px;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  transition: width 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar li {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#sidebar li:hover {
+  background: rgba(255, 255, 255, 0.08); /* subtle hover (works both themes) */
+}
+
+#toggle-btn {
+  margin-bottom: 15px;
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Collapsed sidebar */
+#sidebar.collapsed {
+  width: 60px;
+}
+
+#sidebar.collapsed ul li {
+  text-align: center;
+  padding: 12px 0;
+}
+
+/* Main content */
+#content {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
-  background: #f6f6f9;
 }
 
+/* Chat container */
 #chat-container {
-  width: 400px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  overflow: hidden;
+  background: var(--bg);
+  transition: background 0.3s ease;
 }
 
 #messages {
@@ -25,28 +152,37 @@ body {
   overflow-y: auto;
 }
 
+/* Messages */
 .message {
   margin: 8px 0;
-  padding: 10px;
+  padding: 10px 14px;
   border-radius: 12px;
-  max-width: 70%;
+  width: fit-content;        
+  max-width: 70%;            
+  word-wrap: break-word;
+  font-size: 14px;
 }
 
 .user {
-  background: #007bff;
-  color: white;
+  background: var(--user-msg-bg);
+  color: var(--user-msg-text);
   margin-left: auto;
 }
 
 .bot {
-  background: #e5e5ea;
-  color: black;
+  background: var(--bot-msg-bg);
+  color: var(--bot-msg-text);
   margin-right: auto;
 }
 
+/* Input */
 #input-container {
   display: flex;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--input-border);
+  overflow: hidden;
+  border-radius: 5px;
+  background: var(--input-bg);
+  transition: background 0.3s ease, border 0.3s ease;
 }
 
 #user-input {
@@ -55,15 +191,18 @@ body {
   border: none;
   outline: none;
   font-size: 14px;
+  background: transparent;
+  color: var(--input-text);
 }
 
 #send-btn {
-  background: #007bff;
-  color: white;
+  background: var(--button-bg);
+  color: var(--button-text);
   border: none;
   padding: 0 20px;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 #send-btn:hover {
-  background: #0056b3;
+  background: var(--button-hover);
 }

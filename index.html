@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Chou-AI Chat</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="chat-container">
-    <div id="messages"></div>
-    <div id="input-container">
-      <input type="text" id="user-input" placeholder="Type a message..." />
-      <button id="send-btn">Send</button>
+  <head>
+    <meta charset="UTF-8">
+    <title>Chou-AI Chat</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Sidebar -->
+      <div id="sidebar">
+        <button id="toggle-btn">☰</button>
+        <button id="theme-toggle">🌙</button>
+        <ul>
+          <li>💬 Chat</li>
+          <li>📐 Geometry</li>
+          <li>🧩 Scratch</li>
+          <li>📓 Notebook</li>
+        </ul>
+      </div>
+
+      <!-- Main content -->
+      <div id="content">
+        <div id="chat-container">
+          <div id="messages"></div>
+          <div id="input-container">
+            <input type="text" id="user-input" placeholder="Type a message..." />
+            <button id="send-btn">Send</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <script src="dist/app.js" defer></script>
-</body>
+    <script src="dist/app.js" defer></script>
+  </body>
 </html>
