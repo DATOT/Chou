@@ -1,6 +1,8 @@
-const messagesDiv = document.getElementById("messages") as HTMLDivElement;
-const input = document.getElementById("user-input") as HTMLInputElement;
-const sendBtn = document.getElementById("send-btn") as HTMLButtonElement;
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+
+const messagesDiv = document.getElementById("messages");
+const input = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
 
 const SYSTEM_PROMPT = `
 You are a helpful chatbot named Chou-AI.
@@ -14,12 +16,15 @@ Respond in the same language the user uses.
 You should answer in Vietnamese.
 `.trim();
 
-let chatId: string | null = null;
+let chatId = null;
 
-function appendMessage(text: string, sender: "user" | "bot") {
+function appendMessage(text, sender) {
   const msg = document.createElement("div");
   msg.className = `message ${sender}`;
-  msg.innerText = text;
+
+  // Convert markdown -> HTML
+  msg.innerHTML = marked.parse(text);
+
   messagesDiv.appendChild(msg);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
@@ -76,14 +81,14 @@ input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") sendMessage();
 });
 
-const sidebar = document.getElementById("sidebar")!;
-const toggleBtn = document.getElementById("toggle-btn")!;
+const sidebar = document.getElementById("sidebar");
+const toggleBtn = document.getElementById("toggle-btn");
 
 toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
 });
 
-const btn = document.getElementById("theme-toggle")! as HTMLButtonElement;
+const btn = document.getElementById("theme-toggle");
 const body = document.body;
 
 // Load saved theme

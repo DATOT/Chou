@@ -163,6 +163,66 @@ body {
   font-size: 14px;
 }
 
+/* Markdown basics */
+.message p {
+  margin: 6px 0;
+}
+
+.message strong {
+  font-weight: bold;
+}
+
+.message em {
+  font-style: italic;
+}
+
+.message a {
+  color: var(--button-bg);
+  text-decoration: none;
+}
+.message a:hover {
+  text-decoration: underline;
+}
+
+/* Lists */
+.message ul,
+.message ol {
+  margin: 6px 0 6px 18px;
+  padding: 0;
+}
+
+/* Inline code */
+.message code {
+  background: rgba(0,0,0,0.15);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+/* Code blocks */
+.message pre {
+  background: rgba(0,0,0,0.25);
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: 13px;
+  margin: 8px 0;
+}
+.message pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Blockquotes */
+.message blockquote {
+  margin: 8px 0;
+  padding-left: 10px;
+  border-left: 3px solid var(--button-bg);
+  opacity: 0.9;
+}
+
 .user {
   background: var(--user-msg-bg);
   color: var(--user-msg-text);
